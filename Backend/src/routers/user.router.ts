@@ -8,7 +8,7 @@ import bcrypt from "bcryptjs";
 const router = Router();
 
 router.get(
-  "/seed",
+  "/upload",
   asyncHandler(async (req, res) => {
     const usersCount = await UserModel.countDocuments();
     if (usersCount > 0) {

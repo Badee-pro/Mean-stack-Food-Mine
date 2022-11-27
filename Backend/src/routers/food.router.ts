@@ -5,7 +5,7 @@ import { FoodModel } from "../models/food.model";
 const router = Router();
 
 router.get(
-  "/seed",
+  "/upload",
   asyncHandler(async (req, res) => {
     const foodsCount = await FoodModel.countDocuments();
     if (foodsCount > 0) {
