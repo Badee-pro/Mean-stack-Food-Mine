@@ -8,6 +8,8 @@ import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { User } from '../shared/models/User';
 
 const USER_KEY = 'User';
+const USER_CART = 'Cart';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -62,7 +64,9 @@ export class UserService {
 
   logout() {
     this.userSubject.next(new User());
-    localStorage.removeItem(USER_KEY);
+    // localStorage.removeItem(USER_KEY);
+    // localStorage.removeItem(USER_CART);
+    localStorage.clear();
     window.location.reload();
   }
 

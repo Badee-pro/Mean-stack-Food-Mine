@@ -25,6 +25,8 @@ router.post(
   "/login",
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    // const password = req.body.password;
+    // const email  = req.body;
     const user = await UserModel.findOne({ email: email.toLowerCase() });
     if (!user) {
       res.status(HTTP_BAD_REQUEST).send("Username is invalid!");
