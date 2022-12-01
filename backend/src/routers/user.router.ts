@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sample_users } from "../data";
+// import { sample_users } from "../data";
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import { User, UserModel } from "../models/user.model";
@@ -7,19 +7,19 @@ import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import bcrypt from "bcryptjs";
 const router = Router();
 
-router.get(
-  "/upload",
-  asyncHandler(async (req, res) => {
-    const usersCount = await UserModel.countDocuments();
-    if (usersCount > 0) {
-      res.send("Upload is already done!");
-      return;
-    }
+// router.get(
+//   "/upload",
+//   asyncHandler(async (req, res) => {
+//     const usersCount = await UserModel.countDocuments();
+//     if (usersCount > 0) {
+//       res.send("Upload is already done!");
+//       return;
+//     }
 
-    await UserModel.create(sample_users);
-    res.send("Upload Is Done!");
-  })
-);
+//     await UserModel.create(sample_users);
+//     res.send("Upload Is Done!");
+//   })
+// );
 
 router.post(
   "/login",
