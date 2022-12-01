@@ -2,7 +2,7 @@
   <div class="details">
     <app-title title="Login"></app-title>
 
-    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="submit()">
       <text-input
         [control]="fc.email"
         [showErrorsWhen]="isSubmitted"
@@ -18,7 +18,7 @@
         label="Password"
       >
       </text-input>
-
+      
       <default-button text="Login"></default-button>
       <div class="register">
         New user? &nbsp;
