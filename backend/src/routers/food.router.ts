@@ -39,7 +39,15 @@ router.get(
             text: {
               query: req.params.searchTerm,
               path: "name",
+              fuzzy: {},
             },
+            // index: "autoComplete",
+            // autocomplete: {
+            //   query: req.params.searchTerm,
+            //   path: "name",
+            //   fuzzy: {},
+            //   tokenOrder: "sequential",
+            // },
           },
         },
       ]
