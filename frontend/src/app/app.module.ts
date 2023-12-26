@@ -30,6 +30,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
+// import { MatInputModule } from '@angular/material/input';
+// import { MatOptionModule } from '@angular/material/core';
+// import { MatAutocompleteModule } from '@angular/material/autocomplete';
+// import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,10 @@ import { OrderTrackPageComponent } from './components/pages/order-track-page/ord
     RatingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    // MatFormFieldModule,
+    // MatAutocompleteModule,
+    // MatOptionModule,
+    // MatInputModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',

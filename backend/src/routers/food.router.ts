@@ -26,6 +26,52 @@ router.get(
   })
 );
 
+// router.get(
+//   "/autocomplete/:searchTerm",
+//   asyncHandler(async (req, res) => {
+//     const foods = await FoodModel.find();
+//     res.send(foods);
+//   })
+// );
+
+router.post("/getFoods", async (req, res) => {
+  let payload = req.body.payload;
+  console.log(payload);
+  let search = await FoodModel.find({
+    name: { $regex: new RegExp("^" + payload + ".*", "i") },
+  }).exec();
+  search = search.slice(0, 3);
+  const foods = await FoodModel.aggregate(
+    // { name: { $regex: searchRegex } }
+    [
+      {
+        $search: {
+          index: "autoComplete",
+          autocomplete: {
+            query: req.body.payload,
+            path: "name",
+            // fuzzy: {},
+            fuzzy: {
+              maxEdits: 1,
+              prefixLength: 1,
+            },
+            tokenOrder: "sequential",
+          },
+        },
+      },
+      { $limit: 4 },
+      {
+        $project: {
+          _id: 0,
+          name: 1,
+        },
+      },
+    ]
+  );
+
+  res.send({ foods: search });
+});
+
 router.get(
   "/search/:searchTerm",
   asyncHandler(async (req, res) => {
@@ -35,21 +81,34 @@ router.get(
       [
         {
           $search: {
-            index: "seachFood",
-            text: {
-              query: req.params.searchTerm,
-              path: "name",
-              fuzzy: {},
-            },
-            // index: "autoComplete",
-            // autocomplete: {
+            // index: "seachFood",
+            // text: {
             //   query: req.params.searchTerm,
             //   path: "name",
             //   fuzzy: {},
-            //   tokenOrder: "sequential",
             // },
+            index: "autoComplete",
+            autocomplete: {
+              query: req.params.searchTerm,
+              path: "name",
+              // fuzzy: {},
+              fuzzy: {
+                maxEdits: 1,
+                prefixLength: 1,
+              },
+              // fuzzy: { maxEdits: 1, prefixLength: 1, maxExpansions: 256 },
+              tokenOrder: "sequential",
+              // type: "autocomplete",
+            },
           },
         },
+        // { $limit: 4 },
+        // {
+        //   $project: {
+        //     _id: 0,
+        //     name: 1,
+        //   },
+        // },
       ]
     );
 

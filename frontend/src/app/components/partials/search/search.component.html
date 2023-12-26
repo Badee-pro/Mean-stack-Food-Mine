@@ -1,10 +1,112 @@
 <div>
+  <!-- <mat-form-field class="example-full-width">
+    <input
+      type="text"
+      placeholder="Search Food Mine!"
+      (keyup)="sendData($event)"
+      [value]="searchTerm"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let foods of foods" [value]="foods">
+        {{ foods.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field> -->
+
   <input
     #s
     type="text"
     placeholder="Search Food Mine!"
+    (keyup)="sendData($event)"
+    (keyup.enter)="search(s.value)"
+    [value]="searchTerm"
+    list="name"
+  />
+  <tr *ngFor="let food of foods">
+    {{
+      food.name
+    }}
+  </tr>
+  <!-- <ul id="ingredients" *ngFor="let food of foods">
+    <li>
+      {{ food.name }}
+    </li>
+  </ul> -->
+  <button (click)="search(s.value)">Search</button>
+  <!-- <section class="search-results">
+    <p *ngIf="foods.length < 1">Sorry. Nothing Found.</p>
+    <ng-template ngFor let-foods [ngForOf]="foods" let-i="index">
+      <hr *ngIf="i > 0" />
+      <p>{{ foods.name }}</p>
+    </ng-template>
+  </section> -->
+
+  <!-- <mat-form-field>
+    <input
+      [matAutocomplete]="auto"
+      matInput
+      type="text"
+      placeholder="Search Food Mine!"
+      (keyup)="sendData($event)"
+      (keyup.enter)="search(s.value)"
+      [value]="searchTerm"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let foods of foods">
+        {{ foods.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field> -->
+
+  <!-- <md-autocomplete
+    md-no-cache="true"
+    md-selected-item="ctrl.selectedItem2"
+    md-items="item in ctrl.items2"
+    md-search-text="ctrl.searchText2"
+    md-item-text="item.display"
+    md-min-length="0"
+    md-floating-label="selector2"
+    md-select-on-focus
+  >
+    <span>{{ foods.name }}</span>
+  </md-autocomplete> -->
+
+  <!-- <li *ngFor="let food of foods">
+    <div class="name">
+      {{ food.name }}
+    </div>
+  </li> -->
+  <!-- <datalist id="name">
+    <option *ngFor="let food of foods">
+      {{ food.name }}
+      <div class="name">
+        {{ food.name }}
+      </div>
+    </option>
+    <option>Hermione</option>
+    <option>Dumbledore</option>
+    <option>Merlin</option>
+    <option>Gandalf</option>
+  </datalist> -->
+</div>
+
+<!-- <mat-form-field>
+  <input
+    matInput
+    #s
+    type="text"
+    [matAutocomplete]="auto"
+    placeholder="Search Food Mine!"
     (keyup.enter)="search(s.value)"
     [value]="searchTerm"
   />
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngIf="let item of options">
+      {{ item }}
+    </mat-option>
+  </mat-autocomplete>
   <button (click)="search(s.value)">Search</button>
-</div>
+</mat-form-field> -->

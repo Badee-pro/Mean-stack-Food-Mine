@@ -18,6 +18,12 @@ app.use(
   })
 );
 
+// app.post("/api/getFoods", (req, res) => {
+  // let payload = req.body.payload;
+  // const foods = await FoodModel.find();
+  // res.send(foods);
+//   res.send({payload: payload});
+// });
 app.use("/api/foods", foodRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);

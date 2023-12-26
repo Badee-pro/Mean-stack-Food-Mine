@@ -17,6 +17,20 @@ input {
   outline: none;
 }
 
+.search-results {
+  max-width: 600px;
+  width: 65%;
+  margin: 20px auto 0 auto;
+}
+hr {
+  border: none;
+  height: 1px;
+  background-color: lightgray;
+}
+p {
+  margin: 10px 0;
+}
+
 div button {
   color: grey;
   height: 3rem;
